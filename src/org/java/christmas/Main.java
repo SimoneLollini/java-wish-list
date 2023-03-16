@@ -6,13 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-//2. Creare una classe ChristmasLetter che contiene il nome e l’indirizzo del mittente e la lista dei desideri (List<String>).
-//Aggiungere opportuni costruttori e metodi getter e setter.
-//Aggiungere un metodo send(), che prova ad inviare la lettera a Babbo Natale:
-//se tutto va bene il metodo stampa a video la lettera, il nome e l’indirizzo
-//se la lista dei desideri supera i 5 elementi, il metodo deve sollevare un’eccezione
-//calcolare in modo random un booleano che rappresenta se il mittente è stato buono oppure no: se il booleano è false il metodo si chiude sollevando un’eccezione.
-//3. Nella classe Main creare un’istanza di ChristmasLetter passando la lista di desideri creata al punto 1 e le altre informazioni necessarie. Provare ad inviare la lettera e gestire eventuali eccezioni.
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
@@ -34,6 +27,20 @@ public class Main {
                 Collections.sort(wishList); // ordino la lista
                 for(int i = 0; i < wishList.size(); i++) {
                     System.out.println(i + ". " + wishList.get(i));
+                }
+
+                System.out.println("Inserire mittente: ");
+                String name = scan.nextLine();
+
+                System.out.println("Inserire indirizzo mittente: ");
+                String address = scan.nextLine();
+
+                ChristmasLetter letter = new ChristmasLetter(name,address,wishList);
+
+                try{
+                    System.out.println(letter.send());
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
                 }
 
             } else {
